@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Pratica 2</title> 
+    <meta http-equiv="Content-Type" 
+    	content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th.each="erro : ${erros}">
+        <p th:text="${erro}"></p>
+    </div>
+    <form action="#" th:action="@{/salvarfuncionario}" 
+        th:object="${funcionario}" method="post">
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}"/> <br/>
+        <label>CPF</label>
+        <input type="text" th:field="*{cpf}"/> <br/>
+        <label>Data de Nascimento</label>
+        <input type="text" th:field="*{dataNascimento}"/> <br/>
+        <label>Endereço</label>
+        <input type="text" th:field="*{endereco}"/> <br/>
+        <label>Telefone</label>
+        <input type="text" th:field="*{telefone}"/> <br/>
+        <label>RG</label>
+        <input type="text" th:field="*{rg}"/> <br/>
+        <label>Data de Admissao</label>
+        <input type="text" th:field="*{dataAdmissao}"/> <br/>
+        <label>Cargo</label>
+        <select th:field="*{cargo}">
+                <option value="">Selecione o cargo</option>
+                    <option th:each="cargo : ${cargos}" th:value="${cargo}"
+                            th:text="${cargo}"></option>
+        </select> <br/>
+            <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

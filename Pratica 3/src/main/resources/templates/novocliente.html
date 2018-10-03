@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Pratica 2</title> 
+    <meta http-equiv="Content-Type" 
+    	content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th.each="erro : ${erros}">
+        <p th:text="${erro}"></p>
+    </div>
+    <form action="#" th:action="@{/salvarcliente}" 
+        th:object="${cliente}" method="post">
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}"/> <br/>
+        <label>Tipo de Logradouro</label>
+        <select th:field="*{tipoLogradouro}">
+            <option value="rua">Rua</option>
+            <option value="avenida">Avenida</option>
+        </select> <br/>
+        <label>Logradouro</label>
+        <input type="text" th:field="*{logradouro}"/> <br/>
+        <label>Número do Logradouro</label>
+        <input type="number" th:field="*{numeroLogradouro}"/> <br/>
+        <label>Telefone Residencial</label>
+        <input type="text" th:field="*{telefoneResidencial}"/> <br/>
+        <label>Telefone Comercial</label>
+        <input type="text" th:field="*{telefoneComercial}"/> <br/>
+        <label>Telefone Celular</label>
+        <input type="text" th:field="*{telefoneCelular}"/> <br/>
+        <label>CPF</label>
+        <input type="text" th:field="*{cpf}"/> <br/>
+        <label>RG</label>
+        <input type="text" th:field="*{rg}"/> <br/>
+        <label>Profissão</label>
+        <select th:field="*{profissao}">
+                <option value="">Selecione a profissão</option>
+                    <option th:each="profissao : ${profissoes}" th:value="${profissao}"
+                            th:text="${profissao}"></option>
+        </select> <br/>
+            <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
