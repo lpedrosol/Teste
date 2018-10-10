@@ -16,12 +16,14 @@ public abstract class FuncionarioDAO {
         Connection con = Conexao.getConnection();
         System.out.println("Conectado!");
         String sql = "insert into funcionarios " +
-            "(nome,cpf,data_nascimento)" +
-            " values (?,?,?)";
+            "(nome,cpf,data_de_nascimento,data_de_admissao, cargo)" +
+            " values (?,?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, funcionario.getNome());
         stmt.setString(2, funcionario.getCpf());
         stmt.setString(3, funcionario.getDataNascimento());
+        stmt.setString(4, funcionario.getDataAdmissao());
+        stmt.setString(5, funcionario.getCargo());
         stmt.execute();
         stmt.close();
         con.close();
@@ -38,7 +40,9 @@ public abstract class FuncionarioDAO {
         	Funcionario funcionario = new Funcionario();
         	funcionario.setNome(rs.getString("nome"));
                 funcionario.setCpf(rs.getString("cpf"));
-                funcionario.setDataNascimento(rs.getString("data_nascimento"));
+                funcionario.setDataNascimento(rs.getString("data_de_nascimento"));
+                funcionario.setDataAdmissao(rs.getString("data_de_admissao"));
+                funcionario.setCargo(rs.getString("cargo"));
                 funcionarios.add(funcionario);
         }
         rs.close();

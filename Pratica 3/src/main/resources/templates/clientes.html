@@ -8,12 +8,16 @@
 <body>
     <table border="1" style="width:300px">
 	    <tr>
-	        <td>Nome</td>
+	        <td>NOME</td>
 	        <td>CPF</td>
+                <td>CELULAR</td>
+                <td>PROFISSAO</td>
 	    </tr>
 	    <tr th:each="cliente : ${clientes}">
 	        <td th:text="${cliente.nome}"></td>
 	        <td th:text="${cliente.cpf}"></td>
+                <td th:text="${cliente.telefoneCelular}"></td>
+                <td th:text="${cliente.profissao}"></td>
 	    </tr>
 	</table>
 </body>

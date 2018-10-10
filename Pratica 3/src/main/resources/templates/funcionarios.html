@@ -8,14 +8,18 @@
 <body>
     <table border="1" style="width:300px">
 	    <tr>
-	        <td>Nome</td>
+	        <td>NOME</td>
 	        <td>CPF</td>
-                <td>Data de Nascimento</td>
+                <td>DATA DE NASCIMENTO</td>
+                <td>DATA DE ADMISSAO</td>
+                <td>CARGO</td>
 	    </tr>
 	    <tr th:each="funcionario : ${funcionarios}">
 	        <td th:text="${funcionario.nome}"></td>
 	        <td th:text="${funcionario.cpf}"></td>
                 <td th:text="${funcionario.dataNascimento}"></td>
+                <td th:text="${funcionario.dataAdmissao}"></td>
+                <td th:text="${funcionario.cargo}"></td>
 	    </tr>
 	</table>
 </body>
