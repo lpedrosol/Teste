@@ -1,3 +1,9 @@
+/**
+ * Classe {@code FuncionarioDAO} responsável por gerenciar os objetos de funcionarios no Banco de dados
+ * @author Pedro Resende
+ * @since 1.0
+ */
+
 package edu.pitagoras.modeloDAO;
 
 import java.sql.Connection;
@@ -12,6 +18,11 @@ import edu.pitagoras.modelodados.Funcionario;
 
 public abstract class FuncionarioDAO {
     
+     /**
+     * Método {@code adicionarFuncionario} reponsável por inserir um novo registro de funcionario no Banco de Dados
+     * @param funcionario
+     * @throws SQLException 
+     */
     public static void adicionarFuncionario(Funcionario funcionario) throws SQLException{
         Connection con = Conexao.getConnection();
         System.out.println("Conectado!");
@@ -29,6 +40,13 @@ public abstract class FuncionarioDAO {
         con.close();
     }
     
+    
+     /**
+     * Método {@code buscarFuncionarios} responsável por buscar todos os registros de funcionarios existentes no banco
+     * e apresentá-los aos usuários
+     * @param List<Funcionario>
+     * @throws SQLException 
+     */
     public static List<Funcionario> buscarFuncionarios() throws SQLException{
         Connection con = Conexao.getConnection();
         System.out.println("Conectado!");

@@ -1,3 +1,10 @@
+/**
+ * Classe {@code ClienteDAO} responsável por gerenciar os objetos de clientes no Banco de dados
+ * @author Pedro Resende
+ * @since 1.0
+ */
+
+
 package edu.pitagoras.modeloDAO;
 
 import java.sql.Connection;
@@ -11,6 +18,12 @@ import edu.pitagoras.config.Conexao;
 import edu.pitagoras.modelodados.Cliente;
 
 public abstract class ClienteDAO {
+    
+    /**
+     * Método {@code adicionarCliente} reponsável por inserir um novo registro de cliente no Banco de Dados
+     * @param cliente
+     * @throws SQLException 
+     */
     
     public static void adicionarCliente(Cliente cliente) throws SQLException{
         Connection con = Conexao.getConnection();
@@ -27,6 +40,13 @@ public abstract class ClienteDAO {
         stmt.close();
         con.close();
     }
+    
+    /**
+     * Método {@code buscarClientes} responsável por buscar todos os registros de clientes existentes no banco
+     * e apresentá-los aos usuários
+     * @param List<Cliente>
+     * @throws SQLException 
+     */
     
     public static List<Cliente> buscarClientes() throws SQLException{
         Connection con = Conexao.getConnection();

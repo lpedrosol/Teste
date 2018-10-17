@@ -1,3 +1,9 @@
+/**
+ * Classe {@code ClienteController} que gerencia a interface entre as funcionalidades de clientes e as páginas HTML
+ * @author Pedro Resende
+ * @since 1.0
+ */
+
 package edu.pitagoras.controladores;
 
 import java.sql.SQLException;
@@ -16,8 +22,14 @@ import edu.pitagoras.modelodados.Cliente;
 @Controller
 public class ClienteController {
 	
+    
+        /**
+         * Método {@code novoCliente} que cria um novo objeto de cliente e chama a página novocliente.html
+         * @param model
+         * @return novocliente.html
+         */
 	@RequestMapping(value = "/novocliente", method = RequestMethod.GET)
-    public String novoCliente(Model model) {
+        public String novoCliente(Model model) {
 		List<String> profissoes = new ArrayList<String>();
 		profissoes.add("Administrador");
 		profissoes.add("Médico");
@@ -28,7 +40,12 @@ public class ClienteController {
 		model.addAttribute("cliente", new Cliente());
         return "novocliente";
     }
-	
+	/**
+         * Método {@code salvarcliente} que recebe um novo objeto cliente e incia o procedimento de gravação no bando de dados
+         * @param Objeto cliente
+         * @return página novoCliente.html
+         * @throws SQLException 
+         */
 	@RequestMapping(value = "/salvarcliente", method = RequestMethod.POST)
 	public String salvarcliente(@ModelAttribute Cliente cliente, Model model) throws SQLException {
             cliente.informacoesCliente();
@@ -43,9 +60,14 @@ public class ClienteController {
             model.addAttribute("cliente", new Cliente());
             return "novocliente";
 	}
-	
+	/**
+         * Método {@code clientes} que inicia a rotina de busca e listagem de clientes salvos no Banco de Dados
+         * @param model
+         * @return página clientes.html
+         * @throws SQLException 
+         */
 	@RequestMapping(value = "/clientes", method = RequestMethod.GET)
-    public String clientes(Model model) throws SQLException {
+        public String clientes(Model model) throws SQLException {
 		model.addAttribute("clientes", ClienteDAO.buscarClientes());
         return "clientes";
     }
